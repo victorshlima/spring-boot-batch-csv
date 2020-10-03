@@ -1,5 +1,7 @@
 package net.petrikainulainen.spring.batch;
 
+import org.springframework.batch.item.ItemProcessor;
+
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -26,6 +28,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 
+import net.petrikainulainen.spring.batch.common.LoggingStudentProcessor;
+
+
+
+
 /**
  * This configuration class configures the Spring Batch job that
  * is used to demonstrate that our item reader reads the correct
@@ -44,25 +51,21 @@ public class SpringBatchExampleJobConfig {
         csvFileReader.setLineMapper(studentLineMapper);
 
         return csvFileReader;
-    }
-
-
-    
+    }    
 
     @Bean
     public FlatFileItemWriter itemWriter() {
-            return  new FlatFileItemWriterBuilder<StudentDTO>()
+            return  new FlatFileItemWriterBuilder<StudentDtoReturn>()
                                        .name("itemWriter")
                                        .resource(new FileSystemResource("target/test-outputs/output.txt"))
                                        .lineAggregator(new PassThroughLineAggregator<>())
                                        .build();
     }
-
-
-
-
-
-
+    
+    @Bean
+    public ItemProcessor<StudentDTO, StudentDTO> studentProcessor() {
+        return new LoggingStudentProcessor();
+    }
 
     private LineMapper<StudentDTO> createStudentLineMapper() {
         DefaultLineMapper<StudentDTO> studentLineMapper = new DefaultLineMapper<>();
@@ -79,7 +82,7 @@ public class SpringBatchExampleJobConfig {
     private LineTokenizer createStudentLineTokenizer() {
         DelimitedLineTokenizer studentLineTokenizer = new DelimitedLineTokenizer();
         studentLineTokenizer.setDelimiter(";");
-        studentLineTokenizer.setNames(new String[]{"name", "emailAddress", "purchasedPackage"});
+        studentLineTokenizer.setNames(new String[]{"agencia", "conta", "saldo", "status"});
         return studentLineTokenizer;
     }
 
@@ -101,7 +104,7 @@ public class SpringBatchExampleJobConfig {
     }
     private FieldExtractor<StudentDTO> createStudentFieldExtractor() {
         BeanWrapperFieldExtractor<StudentDTO> extractor = new BeanWrapperFieldExtractor<>();
-        extractor.setNames(new String[] {"name", "emailAddress", "purchasedPackage"});
+        extractor.setNames(new String[] {"agencia", "conta", "saldo", "status"});
         return extractor;
     }
     
@@ -121,10 +124,12 @@ public class SpringBatchExampleJobConfig {
     @Bean
     public Step exampleJobStep(ItemReader<StudentDTO> reader,
                                ItemWriter<StudentDTO> writer,
+                               ItemProcessor<StudentDTO, StudentDTO> studentProcessor,
                                StepBuilderFactory stepBuilderFactory) {
         return stepBuilderFactory.get("exampleJobStep")
                 .<StudentDTO, StudentDTO>chunk(1)
                 .reader(reader)
+                .processor(studentProcessor)
                 .writer(writer)
                 .build();
     }

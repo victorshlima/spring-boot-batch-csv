@@ -1,6 +1,9 @@
 package net.petrikainulainen.spring.batch.common;
 
 import net.petrikainulainen.spring.batch.StudentDTO;
+import net.petrikainulainen.spring.batch.StudentDtoReturn;
+import net.petrikainulainen.spring.batch.receita.ReceitaService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
@@ -16,8 +19,13 @@ public class LoggingStudentProcessor implements ItemProcessor<StudentDTO, Studen
     private static final Logger LOGGER = LoggerFactory.getLogger(LoggingStudentProcessor.class);
 
     @Override
-    public StudentDTO process(StudentDTO item) throws Exception {
+    public StudentDtoReturn process(StudentDTO item) throws Exception {
         LOGGER.info("Processing student information: {}", item);
-        return item;
+        
+        ReceitaService receitaService = new ReceitaService();
+        Boolean retornoReceita =  receitaService.atualizarConta(item.getAgencia(),item.getContaFormatada(), item.getSaldoFormatada(), item.getStatus());   
+             
+        LOGGER.info("retorno receita {}", item + " - " + retornoReceita);
+        return new StudentDtoReturn(item, retornoReceita);
     }
 }

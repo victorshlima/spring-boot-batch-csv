@@ -1,10 +1,6 @@
-D:\development\DEV_TOOLS\desafiotecnico\spring-batch-examples\reading-data\csv-file\SpringReadWrite\src\main\java\br\com\southsystem\spring\batch\log\LoggingItemWriter.java
+D:\development\DEV_TOOLS\desafiotecnico\spring-batch-examples\reading-data\csv-file\SpringReadWrite\src\main\java\br\com\southsystem\spring\batch\common\ContaProcessor.java
 D:\development\DEV_TOOLS\desafiotecnico\spring-batch-examples\reading-data\csv-file\SpringReadWrite\src\main\java\br\com\southsystem\spring\batch\domain\ContaIn.java
 D:\development\DEV_TOOLS\desafiotecnico\spring-batch-examples\reading-data\csv-file\SpringReadWrite\src\main\java\br\com\southsystem\spring\batch\common\ContaJobLauncher.java
-D:\development\DEV_TOOLS\desafiotecnico\spring-batch-examples\reading-data\csv-file\SpringReadWrite\src\main\java\br\com\southsystem\spring\batch\common\ContaLoggingWriter.java
-D:\development\DEV_TOOLS\desafiotecnico\spring-batch-examples\reading-data\csv-file\SpringReadWrite\src\main\java\br\com\southsystem\spring\batch\common\ContaLoggingProcessor.java
-D:\development\DEV_TOOLS\desafiotecnico\spring-batch-examples\reading-data\csv-file\SpringReadWrite\src\main\java\br\com\southsystem\spring\batch\utils\ReadFile.java
-D:\development\DEV_TOOLS\desafiotecnico\spring-batch-examples\reading-data\csv-file\SpringReadWrite\src\main\java\br\com\southsystem\spring\batch\common\StringHeaderWriter.java
 D:\development\DEV_TOOLS\desafiotecnico\spring-batch-examples\reading-data\csv-file\SpringReadWrite\src\main\java\br\com\southsystem\spring\batch\common\ContaJobConfig.java
 D:\development\DEV_TOOLS\desafiotecnico\spring-batch-examples\reading-data\csv-file\SpringReadWrite\src\main\java\br\com\southsystem\spring\batch\receita\ReceitaService.java
 D:\development\DEV_TOOLS\desafiotecnico\spring-batch-examples\reading-data\csv-file\SpringReadWrite\src\main\java\br\com\southsystem\spring\batch\common\DesafioApplication.java

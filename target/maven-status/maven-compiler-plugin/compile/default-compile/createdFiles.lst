@@ -1,0 +1,12 @@
+net\petrikainulainen\spring\batch\StudentDTO.class
+net\petrikainulainen\spring\batch\StudentDtoReturn.class
+net\petrikainulainen\spring\batch\receita\SincronizacaoReceita.class
+net\petrikainulainen\spring\batch\SpringBatchExampleApplication.class
+net\petrikainulainen\spring\batch\StringHeaderWriter.class
+net\petrikainulainen\spring\batch\LoggingItemWriter.class
+net\petrikainulainen\spring\batch\receita\ReceitaService.class
+net\petrikainulainen\spring\batch\common\LoggingStudentWriter.class
+net\petrikainulainen\spring\batch\SpringBatchExampleJobLauncher.class
+net\petrikainulainen\spring\batch\common\LoggingStudentProcessor.class
+net\petrikainulainen\spring\batch\SpringBatchExampleJobConfig.class
+net\petrikainulainen\spring\batch\StudentDTOretorno.class

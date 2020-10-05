@@ -7,7 +7,7 @@
     <name>Spring Batch Tutorial: Reading Data From a CSV File</name>
     <description>
     </description>
-
+ 	<packaging>jar</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -15,7 +15,7 @@
     </parent>
 
     <properties>
-        <jdk.version>14</jdk.version>
+        <jdk.version>8</jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -44,7 +44,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>spring-batch-example</finalName>
+        <finalName>spring-batch-example</finalName>        
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

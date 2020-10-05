@@ -1,0 +1,8 @@
+
+
+
+java -jar spring-batch-example.jar D:\development\DEV_TOOLS\desafiotecnico\Teste\2\students.csv 
+
+java -jar spring-batch-example.jar file:///D:/development/DEV_TOOLS/desafiotecnico/spring-batch-examples/reading-data/csv-file/SpringReadWrite/target/students.csv
+
+java -jar spring-batch-example.jar --spring.output.ansi.enabled=always file:///D:/development/DEV_TOOLS/desafiotecnico/spring-batch-examples/reading-data/csv-file/SpringReadWrite/target/students.csv 

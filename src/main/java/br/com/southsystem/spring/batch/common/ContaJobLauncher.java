@@ -33,13 +33,14 @@ public class ContaJobLauncher {
         this.jobLauncher = jobLauncher;
     }
 
-   @Scheduled(initialDelay = 1000 * 30, fixedDelay=Long.MAX_VALUE)
+   @Scheduled(initialDelay = 1 , fixedDelay=Long.MAX_VALUE)
     public void runSpringBatchContaJob() throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
         LOGGER.info("Conta job iniciou");
         jobLauncher.run(job, newExecution());
         LOGGER.info("Conta job parou");
         LOGGER.info("Processo concluído encerrando...Scheduler ");
        scheduledFuture.cancel(true);
+       LOGGER.info("Processo encerrado!!! ");
     }
     private JobParameters newExecution() {
         Map<String, JobParameter> parameters = new HashMap<>();

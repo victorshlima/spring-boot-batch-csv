@@ -12,7 +12,9 @@ java -jar [artefato] --spring.output.ansi.enabled=always [URI_DO_ARQUIVO]
 
  
 Exemplo:
-java -jar desafio-validacao-receita-csv.jar --spring.output.ansi.enabled=always file:///D:/development/DEV_TOOLS/desafiotecnico/spring-batch-examples/reading-data/csv-file/SpringReadWrite/target/students.csv3 
+java -jar desafio-validacao-receita-csv.jar --spring.output.ansi.enabled=always file:///D:/..../.../students.csv
+
+O arquivo será salvo na pasta [processed] gerada no mesmo local do arterafato .jar, com o mesmo nome + timestamp
 
  
 # Build do projeto

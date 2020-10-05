@@ -1,7 +1,7 @@
 package net.petrikainulainen.spring.batch.common;
 
-import net.petrikainulainen.spring.batch.StudentDTO;
-import net.petrikainulainen.spring.batch.StudentDtoReturn;
+import net.petrikainulainen.spring.batch.domain.StudentDTO;
+import net.petrikainulainen.spring.batch.domain.StudentDtoReturn;
 import net.petrikainulainen.spring.batch.receita.ReceitaService;
 
 import java.io.File;

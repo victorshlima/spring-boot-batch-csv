@@ -1,4 +1,4 @@
-package net.petrikainulainen.spring.batch;
+package net.petrikainulainen.spring.batch.common;
 
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.boot.SpringApplication;

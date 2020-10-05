@@ -1,4 +1,4 @@
-package net.petrikainulainen.spring.batch;
+package net.petrikainulainen.spring.batch.domain;
 
 import java.io.Serializable;
 

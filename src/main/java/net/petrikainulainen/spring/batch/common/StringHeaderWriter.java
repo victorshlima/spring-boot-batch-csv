@@ -1,4 +1,4 @@
-package net.petrikainulainen.spring.batch;
+package net.petrikainulainen.spring.batch.common;
 
 import java.io.IOException;
 import java.io.Writer;

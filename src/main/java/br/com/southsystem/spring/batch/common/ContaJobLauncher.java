@@ -38,7 +38,7 @@ public class ContaJobLauncher {
         LOGGER.info("Conta job iniciou");
         jobLauncher.run(job, newExecution());
         LOGGER.info("Conta job parou");
-        LOGGER.info("processo concluido Encerrando...Scheduler ");
+        LOGGER.info("Processo concluído encerrando...Scheduler ");
        scheduledFuture.cancel(true);
     }
     private JobParameters newExecution() {

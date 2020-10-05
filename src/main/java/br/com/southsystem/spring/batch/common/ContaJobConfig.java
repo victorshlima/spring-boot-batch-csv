@@ -53,6 +53,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
+import org.springframework.core.task.TaskExecutor;
 
 import br.com.southsystem.spring.batch.domain.ContaIn;
 import br.com.southsystem.spring.batch.domain.ContaOut;
@@ -135,9 +136,13 @@ public class ContaJobConfig {
 
 	@Bean
 	public Step ContaJobStep(ItemReader<ContaIn> reader, ItemWriter<ContaOut> writer,
-			ItemProcessor<ContaIn, ContaOut> ContaProcessor, StepBuilderFactory stepBuilderFactory) {
+			ItemProcessor<ContaIn, ContaOut> ContaProcessor, StepBuilderFactory stepBuilderFactory, TaskExecutor taskExecutor) {
 		return stepBuilderFactory.get("ContaJobStep").<ContaIn, ContaOut>chunk(1).reader(reader)
-				.processor(ContaProcessor).writer(writer).build();
+				.processor(ContaProcessor)
+				.writer(writer)
+				.taskExecutor(taskExecutor)
+				.throttleLimit(10000)
+				.build();
 	}
 	
 		

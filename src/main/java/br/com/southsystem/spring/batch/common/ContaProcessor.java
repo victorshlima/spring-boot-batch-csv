@@ -18,11 +18,10 @@ public class ContaProcessor implements ItemProcessor<ContaIn, ContaOut> {
 		ReceitaService receitaService = new ReceitaService();
 		Boolean retornoReceita = receitaService.atualizarConta(item.getAgencia(), item.getContaFormatada(),
 				item.getSaldoFormatada(), item.getStatus());
-		return new ContaOut(item, retornoReceita);
-		
+		return new ContaOut(item, retornoReceita);		
 		} catch (Exception e) {
 		LOGGER.info("Erro ao atualizar conta: {}", item + "- \n -"+ e.getMessage() );
-		return  null;
+		return new ContaOut(item, false);
 		}	
 	}
 }

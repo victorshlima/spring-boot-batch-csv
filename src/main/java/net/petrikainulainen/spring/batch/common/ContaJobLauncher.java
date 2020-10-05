@@ -18,19 +18,16 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * This bean schedules and runs our Spring Batch job.
- */
 @Component
-public class SpringBatchExampleJobLauncher {
+public class ContaJobLauncher {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SpringBatchExampleJobLauncher.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ContaJobLauncher.class);
 
     private final Job job;
     private final JobLauncher jobLauncher;
 
     @Autowired
-    public SpringBatchExampleJobLauncher(Job job, JobLauncher jobLauncher) {
+    public ContaJobLauncher(Job job, JobLauncher jobLauncher) {
         this.job = job;
         this.jobLauncher = jobLauncher;
     }

@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="01-create-spring-batch-tables" author="Petri Kainulainen">
+    <changeSet id="01-create-spring-batch-tables" author="V">
         <createSequence sequenceName="batch_step_execution_seq"/>
         <createSequence sequenceName="batch_job_execution_seq"/>
         <createSequence sequenceName="batch_job_seq"/>

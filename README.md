@@ -1,24 +1,21 @@
-# Spring Batch Tutorial: Reading Data From a CSV File
+# Desafio - South System
 
-You can read the relevant blog post by clicking the following link:
 
-* [Spring Batch Tutorial: Reading Data From a CSV File](https://www.petrikainulainen.net/programming/spring-framework/spring-batch-tutorial-reading-information-from-a-file/)
 
-# Prerequisites
+* [JDK] (OpenJDK 8)
+* [Maven] ( Maven 3.6.3)
 
-You need to install the following tools if you want to run this application:
 
-* [JDK](https://adoptopenjdk.net/) (the application is tested with OpenJDK 14)
-* [Maven](http://maven.apache.org/) (the application is tested with Maven 3.6.3)
+# Execução
 
-# Running the Application With Maven
+java -jar [artefato] --spring.output.ansi.enabled=always [URI_DO_ARQUIVO]
 
-You can run the application by using the following command:
+ 
+Exemplo:
+java -jar desafio-validacao-receita-csv.jar --spring.output.ansi.enabled=always file:///D:/development/DEV_TOOLS/desafiotecnico/spring-batch-examples/reading-data/csv-file/SpringReadWrite/target/students.csv3 
 
-    mvn clean spring-boot:run
+ 
+# Build do projeto
 
-# Running the Application With Gradle
-
-You can run the application by using the following command:
-
-    gradle clean bootRun
+   mvn clean install
+  

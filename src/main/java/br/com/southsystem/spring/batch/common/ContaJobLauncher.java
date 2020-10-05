@@ -1,4 +1,4 @@
-package net.petrikainulainen.spring.batch.common;
+package br.com.southsystem.spring.batch.common;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ScheduledFuture;
 
 @Component
 public class ContaJobLauncher {
@@ -25,28 +26,25 @@ public class ContaJobLauncher {
 
     private final Job job;
     private final JobLauncher jobLauncher;
-
+	private ScheduledFuture scheduledFuture;
     @Autowired
     public ContaJobLauncher(Job job, JobLauncher jobLauncher) {
         this.job = job;
         this.jobLauncher = jobLauncher;
     }
 
-    @Scheduled(cron = "1/10 * * * * *")
-    public void runSpringBatchExampleJob() throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
-        LOGGER.info("Spring Batch example job was started");
-
+   @Scheduled(initialDelay = 1000 * 30, fixedDelay=Long.MAX_VALUE)
+    public void runSpringBatchContaJob() throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
+        LOGGER.info("Conta job iniciou");
         jobLauncher.run(job, newExecution());
-
-        LOGGER.info("Spring Batch example job was stopped");
+        LOGGER.info("Conta job parou");
+        LOGGER.info("processo concluido Encerrando...Scheduler ");
+       scheduledFuture.cancel(true);
     }
-
     private JobParameters newExecution() {
         Map<String, JobParameter> parameters = new HashMap<>();
-
         JobParameter parameter = new JobParameter(new Date());
         parameters.put("currentTime", parameter);
-
         return new JobParameters(parameters);
     }
 }

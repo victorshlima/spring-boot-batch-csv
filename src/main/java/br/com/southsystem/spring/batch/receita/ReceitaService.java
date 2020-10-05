@@ -1,4 +1,4 @@
-package net.petrikainulainen.spring.batch.receita;
+package br.com.southsystem.spring.batch.receita;
 
 
 import java.util.ArrayList;

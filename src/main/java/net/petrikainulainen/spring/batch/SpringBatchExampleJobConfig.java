@@ -2,6 +2,18 @@ package net.petrikainulainen.spring.batch;
 
 import org.springframework.batch.item.ItemProcessor;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -23,12 +35,19 @@ import org.springframework.batch.item.file.transform.FieldExtractor;
 import org.springframework.batch.item.file.transform.LineAggregator;
 import org.springframework.batch.item.file.transform.LineTokenizer;
 import org.springframework.batch.item.file.transform.PassThroughLineAggregator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
 
 import net.petrikainulainen.spring.batch.common.LoggingStudentProcessor;
+import net.petrikainulainen.spring.batch.common.LoggingStudentWriter;
+
 
 
 
@@ -41,10 +60,167 @@ import net.petrikainulainen.spring.batch.common.LoggingStudentProcessor;
 @Configuration
 public class SpringBatchExampleJobConfig {
 
+	
+    private static final Logger LOGGER = LoggerFactory.getLogger(SpringBatchExampleJobConfig.class);
+
+	@Autowired
+    private ApplicationArguments  applicationArguments;
+	
+	
+//	@Autowired
+//	ReadFile readFile;
+	
+
+	
+//    @Bean
+//    public ItemReader<StudentDTO> itemReader() {
+//        FlatFileItemReader<StudentDTO> csvFileReader = new FlatFileItemReader<>();
+//        
+//        String[] filenameArgs = applicationArguments.getSourceArgs();
+//  
+//        
+//		try {
+//			Path  filePath = Paths.get(filenameArgs[1]);
+//			filePath = 	filePath.toRealPath(LinkOption.NOFOLLOW_LINKS);
+//		    System.out.println(filePath.toString());
+//		    
+//		    
+//		    LOGGER.debug(filePath.toString());
+//		    LOGGER.info(filePath.toString());
+//		    LOGGER.trace(filePath.toString());
+//		    LOGGER.error(filePath.toString());
+//		    LOGGER.warn(filePath.toString());
+//		    
+//		    LOGGER.debug(filePath.getRoot().toString());
+//		    LOGGER.info(filePath.getRoot().toString());
+//		    LOGGER.trace(filePath.getRoot().toString());
+//		    LOGGER.error(filePath.getRoot().toString());
+//		    LOGGER.warn(filePath.getRoot().toString());
+//        
+//   //     readFile.leArquivoCsv("students.csv");
+//
+//        File jarDir = new File(ClassLoader.getSystemClassLoader().getResource(".").getPath());
+//       
+//        ///D:/development/DEV_TOOLS/desafiotecnico/spring-batch-examples/reading-data/csv-file/SpringReadWrite/target/classes/
+//        System.out.println(ClassLoader.getSystemClassLoader().getResource(".").getPath());
+//        
+//        System.out.println(jarDir.getAbsolutePath());
+//        
+//        
+//        File f = new File(System.getProperty("java.class.path"));
+//        File dir = f.getAbsoluteFile().getParentFile();
+//        String path = dir.toString();
+//        
+//      	 Path filePath3;
+// 		filePath3 = Paths.get(filenameArgs[1]);
+// 	
+//        FileSystemResource fileSystemResource = new FileSystemResource(filenameArgs[1]);
+//
+//        
+//        csvFileReader.setResource(fileSystemResource);
+//        csvFileReader.setLinesToSkip(1);
+//
+//        LineMapper<StudentDTO> studentLineMapper = createStudentLineMapper();
+//        csvFileReader.setLineMapper(studentLineMapper);
+//
+////		try (Reader reader = Files.newBufferedReader(filePath, StandardCharsets.UTF_8)){
+////			LOGGER.info("Realizando leitura do arquivo...");
+////
+////			reader.read();
+////		} catch (IOException e) {
+////			LOGGER.error("Falha ao realizar leitura do arquivo");
+////			e.printStackTrace();
+////		}
+//
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//        return csvFileReader;
+//    }    
+    
+
     @Bean
     public ItemReader<StudentDTO> itemReader() {
         FlatFileItemReader<StudentDTO> csvFileReader = new FlatFileItemReader<>();
-        csvFileReader.setResource(new ClassPathResource("data/students.csv")); // alterar para o paramentro de entrada
+        
+        
+        String[] filenameArgs = applicationArguments.getSourceArgs();
+        
+        
+    //	Path  filePath = Paths.get(filenameArgs[1]);
+//		try {
+//			filePath = 	filePath.toRealPath(LinkOption.NOFOLLOW_LINKS);
+//		} catch (IOException e2) {
+//			// TODO Auto-generated catch block
+//			e2.printStackTrace();
+//		}
+//	    System.out.println(filePath.toString());
+//	    
+//	    
+//	    
+//	    LOGGER.debug(filePath.getFileName().toString());
+//	    LOGGER.debug(filePath.getFileSystem().toString());
+//	    LOGGER.debug(filePath.getParent().toString());
+//	    
+//	    
+//	    
+//	  
+//	    LOGGER.debug(filePath.toString());
+//	    LOGGER.info(filePath.toString());
+//	    LOGGER.trace(filePath.toString());
+//	    LOGGER.error(filePath.toString());
+//	    LOGGER.warn(filePath.toString());
+//	    
+//	    LOGGER.debug(filePath.getRoot().toString());
+//	    LOGGER.info(filePath.getRoot().toString());
+//	    LOGGER.trace(filePath.getRoot().toString());
+//	    LOGGER.error(filePath.getRoot().toString());
+//	    LOGGER.warn(filePath.getRoot().toString());
+        
+        
+        
+        
+        
+        
+        
+        
+        
+		File f = new File(System.getProperty("java.class.path"));
+		File dir = f.getAbsoluteFile().getParentFile();
+		String path = dir.toString();
+
+		Path filePath3;
+        
+        
+        ClassLoader cl = this.getClass().getClassLoader();
+        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(cl);
+        
+     //   Resource resources = resolver.getResource("file:///D:/development/DEV_TOOLS/desafiotecnico/spring-batch-examples/reading-data/csv-file/SpringReadWrite/target/students.csv" );
+       // Resource resources = resolver.getResource(filenameArgs[0] );
+        Resource resources = resolver.getResource(filenameArgs[1] );  
+        
+        
+        try {
+			resources.getFile();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        
+        try {
+			resources.getURI();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+ 
+    //	File org.springframework.core.io.Resource.getFile()
+        
+        csvFileReader.setResource(
+        		resources
+        		); // alterar para o paramentro de entrada
         csvFileReader.setLinesToSkip(1);
 
         LineMapper<StudentDTO> studentLineMapper = createStudentLineMapper();
@@ -52,6 +228,14 @@ public class SpringBatchExampleJobConfig {
 
         return csvFileReader;
     }    
+    
+    
+    
+    
+    
+    
+    
+    
 
     @Bean
     public FlatFileItemWriter itemWriter() {

@@ -1,9 +1,10 @@
 package net.petrikainulainen.spring.batch.common;
 
-import net.petrikainulainen.spring.batch.StudentDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemWriter;
+
+import net.petrikainulainen.spring.batch.domain.StudentDTO;
 
 import java.util.List;
 

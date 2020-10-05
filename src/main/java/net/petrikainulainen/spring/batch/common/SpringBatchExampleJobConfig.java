@@ -1,4 +1,4 @@
-package net.petrikainulainen.spring.batch;
+package net.petrikainulainen.spring.batch.common;
 
 import org.springframework.batch.item.ItemProcessor;
 
@@ -45,8 +45,8 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
-import net.petrikainulainen.spring.batch.common.LoggingStudentProcessor;
-import net.petrikainulainen.spring.batch.common.LoggingStudentWriter;
+import net.petrikainulainen.spring.batch.domain.StudentDTO;
+import net.petrikainulainen.spring.batch.domain.StudentDtoReturn;
 
 
 

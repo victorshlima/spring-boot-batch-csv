@@ -8,9 +8,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableBatchProcessing
 @EnableScheduling
-public class SpringBatchExampleApplication {
+public class DesafioApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBatchExampleApplication.class, args);
+        SpringApplication.run(DesafioApplication.class, args);
     }
 }

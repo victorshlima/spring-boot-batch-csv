@@ -1,4 +1,4 @@
-package net.petrikainulainen.spring.batch.log;
+package net.petrikainulainen.spring.batch.common;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,9 +8,9 @@ import net.petrikainulainen.spring.batch.domain.ContaIn;
 
 import java.util.List;
 
-public class LoggingItemWriter implements ItemWriter<ContaIn> {
+public class ContaLoggingWriter implements ItemWriter<ContaIn> {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(LoggingItemWriter.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ContaLoggingWriter.class);
 
     @Override
     public void write(List<? extends ContaIn> items) throws Exception {

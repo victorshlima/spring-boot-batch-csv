@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 14
+Implementation-Title: Desafio - South System - Simulação de validaçã
+ o de arquivo na receita
+Implementation-Version: 1.0.0
+Implementation-Vendor: Pivotal Software, Inc.
+Created-By: Maven Integration for Eclipse
+

@@ -1,0 +1,7 @@
+br\com\southsystem\spring\batch\receita\ReceitaService.class
+br\com\southsystem\spring\batch\common\ContaJobConfig.class
+br\com\southsystem\spring\batch\common\ContaProcessor.class
+br\com\southsystem\spring\batch\domain\ContaOut.class
+br\com\southsystem\spring\batch\common\DesafioApplication.class
+br\com\southsystem\spring\batch\domain\ContaIn.class
+br\com\southsystem\spring\batch\common\ContaJobLauncher.class

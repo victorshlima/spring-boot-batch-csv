@@ -16,6 +16,10 @@ java -jar desafio-validacao-receita-csv.jar --spring.output.ansi.enabled=always 
 
 O arquivo será salvo na pasta [processed] gerada no mesmo local do arterafato .jar, com o mesmo nome + timestamp
 
+
+referencia de referencia para URI
+https://pt.wikipedia.org/wiki/URI
+
  
 # Build do projeto
 

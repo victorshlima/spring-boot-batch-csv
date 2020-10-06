@@ -6,7 +6,7 @@
 * [Maven] ( Maven 3.6.3)
 
 
-# Execução
+# Execução 
 
 java -jar [artefato] --spring.output.ansi.enabled=always [URI_DO_ARQUIVO]
 

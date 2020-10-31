@@ -5,9 +5,9 @@ package br.com.southsystem.spring.batch.step;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.file.FlatFileItemWriter;
+import org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor;
+import org.springframework.batch.item.file.transform.DelimitedLineAggregator;
 import org.springframework.batch.item.file.transform.PassThroughLineAggregator;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationArguments;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Component;
@@ -19,8 +19,8 @@ import br.com.southsystem.spring.batch.util.ContextInformation;
 @Component
 public class ContaItemWriter extends FlatFileItemWriter<ContaOut> {
 	
-	@Autowired
-	private ApplicationArguments applicationArguments;
+//	@Autowired
+//	private ApplicationArguments applicationArguments;
 	
 	
 	String[] filename = ContextInformation.getArgs();
@@ -35,7 +35,6 @@ public class ContaItemWriter extends FlatFileItemWriter<ContaOut> {
 					setLineAggregator(new PassThroughLineAggregator<>());			
 	}
 	
-	//@Bean
 	public String getDiretoryFileNameOutput() {
 		try {
 			//String[] filename = applicationArguments.getSourceArgs();
@@ -46,6 +45,29 @@ public class ContaItemWriter extends FlatFileItemWriter<ContaOut> {
 		return null;
 	}
 
+	
+	
+	@Bean
+	public BeanWrapperFieldExtractor<ContaOut> fieldExtractor() {
+		BeanWrapperFieldExtractor<ContaOut> fieldExtractor = new BeanWrapperFieldExtractor<>();
+		fieldExtractor.setNames(new String[] { "agencia", "conta", "saldo", "status", "resultadoReceita" });
+		fieldExtractor.afterPropertiesSet();
+		return fieldExtractor;
+
+	}
+
+	@Bean
+	public DelimitedLineAggregator<ContaOut> lineAggregator() {
+		DelimitedLineAggregator<ContaOut> lineAggregator = new DelimitedLineAggregator<>();
+		lineAggregator.setDelimiter(";");
+		lineAggregator.setFieldExtractor(fieldExtractor());
+		return lineAggregator;
+
+	}
+	
+	
+	
+	
 }
 
 

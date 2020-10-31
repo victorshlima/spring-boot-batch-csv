@@ -27,8 +27,8 @@ public class ContaItemReader extends FlatFileItemReader<ContaIn>  {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ContaJobConfig.class);
 	
 	
-	@Autowired
-	private ApplicationArguments applicationArguments;
+//	@Autowired
+//	private ApplicationArguments applicationArguments;
 
 	String[] filename = ContextInformation.getArgs();
 	
@@ -36,17 +36,16 @@ public class ContaItemReader extends FlatFileItemReader<ContaIn>  {
 	public ContaItemReader () {
 		
 		ContextInformation.getArgs();
-		
+		setName("contaItemReader");
 		setResource(getResourceInputFile());
 		setLinesToSkip(1);
-		LineMapper<ContaIn> ContaLineMapper = createContaLineMapper();
-		setLineMapper(ContaLineMapper);
+		setLineMapper(createContaLineMapper());
 	
 	}
 	
 	
-	
-	@Bean
+	//remover ?
+	//@Bean
 	public Resource getResourceInputFile() {
 		
 		try {
@@ -54,7 +53,7 @@ public class ContaItemReader extends FlatFileItemReader<ContaIn>  {
 		//	String[] filenameArgs = applicationArguments.getSourceArgs();
 			ClassLoader cl = this.getClass().getClassLoader();
 			ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(cl);
-			Resource resource = resolver.getResource(filename[1]);
+			Resource resource = resolver.getResource(filename[2]);
 			return resource;
 		} catch (Exception e) {
 			LOGGER.error("Verifique o parametro nome arquivo {}", e.getLocalizedMessage());
@@ -64,27 +63,27 @@ public class ContaItemReader extends FlatFileItemReader<ContaIn>  {
 	
 	@Bean
 	private LineMapper<ContaIn> createContaLineMapper() {
-		DefaultLineMapper<ContaIn> ContaLineMapper = new DefaultLineMapper<>();
+		DefaultLineMapper<ContaIn> contaLineMapper = new DefaultLineMapper<>();
 		LineTokenizer ContaLineTokenizer = createContaLineTokenizer();
-		ContaLineMapper.setLineTokenizer(ContaLineTokenizer);
+		contaLineMapper.setLineTokenizer(ContaLineTokenizer);
 		FieldSetMapper<ContaIn> ContaInformationMapper = createContaInformationMapper();
-		ContaLineMapper.setFieldSetMapper(ContaInformationMapper);
-		return ContaLineMapper;
+		contaLineMapper.setFieldSetMapper(ContaInformationMapper);
+		return contaLineMapper;
 	}
 	
 	@Bean
-	private FieldSetMapper<ContaIn> createContaInformationMapper() {
-		BeanWrapperFieldSetMapper<ContaIn> ContaInformationMapper = new BeanWrapperFieldSetMapper<>();
-		ContaInformationMapper.setTargetType(ContaIn.class);
-		return ContaInformationMapper;
+	private BeanWrapperFieldSetMapper<ContaIn> createContaInformationMapper() {
+		BeanWrapperFieldSetMapper<ContaIn> contaInformationMapper = new BeanWrapperFieldSetMapper<>();
+		contaInformationMapper.setTargetType(ContaIn.class);
+		return contaInformationMapper;
 	}
 	
 	@Bean
-	private LineTokenizer createContaLineTokenizer() {
-		DelimitedLineTokenizer ContaLineTokenizer = new DelimitedLineTokenizer();
-		ContaLineTokenizer.setDelimiter(";");
-		ContaLineTokenizer.setNames(new String[] { "agencia", "conta", "saldo", "status" });
-		return ContaLineTokenizer;
+	private DelimitedLineTokenizer createContaLineTokenizer() {
+		DelimitedLineTokenizer contaLineTokenizer = new DelimitedLineTokenizer();
+		contaLineTokenizer.setDelimiter(";");
+		contaLineTokenizer.setNames(new String[] { "agencia", "conta", "saldo", "status" });
+		return contaLineTokenizer;
 	}
 
 }

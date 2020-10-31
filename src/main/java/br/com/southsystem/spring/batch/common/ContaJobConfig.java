@@ -1,42 +1,47 @@
 package br.com.southsystem.spring.batch.common;
 
-import org.springframework.batch.item.ItemProcessor;
-
-
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
+import org.springframework.batch.core.listener.JobListenerFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import br.com.southsystem.spring.batch.job.JobListenerInfo;
+
+
+
 
 
 @EnableBatchProcessing
 @Configuration
 public class ContaJobConfig {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(ContaJobConfig.class);
+	@Autowired
+	private JobListenerInfo  jobListenerInfo;
 	
 	@Autowired
 	private JobBuilderFactory jobBuilders;
 	
 	@Autowired
-	ContaStepConfig contaStepConfig;
+	private ContaStepConfig contaStepConfig;
 	
 
 	@Bean
-	public Job accountJob() {
+	public Job contatJob() {
 		return jobBuilders
-				.get("accountJob")
-				.incrementer(new RunIdIncrementer())		
+				.get("contaJob")
+				.incrementer(new RunIdIncrementer())
+				.listener(JobListenerFactoryBean.getListener(jobListenerInfo))
 				.flow(contaStepConfig.ContaJobStep())			
 				.end()
 				.build();
 	}		
 		
+	
 
 }

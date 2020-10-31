@@ -13,9 +13,11 @@ public class ContaItemProcessor implements ItemProcessor<ContaIn, ContaOut> {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ContaItemProcessor.class);
 
+	
+	
 	@Bean
-	public ItemProcessor<ContaIn, ContaOut> ContaProcessor() {
-		return new ContaItemProcessor();
+	public ReceitaService getReceitaService() {
+		return new ReceitaService();
 	}
 	
 	
@@ -23,8 +25,8 @@ public class ContaItemProcessor implements ItemProcessor<ContaIn, ContaOut> {
 	public ContaOut process(ContaIn item) throws Exception {
 		LOGGER.info("Atualizando conta: {}", item);		
 		try {
-		ReceitaService receitaService = new ReceitaService();
-		Boolean retornoReceita = receitaService.atualizarConta(item.getAgencia(), item.getContaFormatada(),
+		
+		Boolean retornoReceita = getReceitaService().atualizarConta(item.getAgencia(), item.getContaFormatada(),
 				item.getSaldoFormatada(), item.getStatus());
 		return new ContaOut(item, retornoReceita);		
 		} catch (Exception e) {

@@ -1,5 +1,9 @@
 package br.com.southsystem.spring.batch.util;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
+
 public class ContextInformation {
 
 	

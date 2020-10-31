@@ -3,8 +3,15 @@ package br.com.southsystem.spring.batch.common;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
+<<<<<<< HEAD
 import org.springframework.batch.core.JobParameter;
 import org.springframework.batch.core.JobParameters;
+=======
+import org.springframework.batch.core.JobExecution;
+import org.springframework.batch.core.JobParameter;
+import org.springframework.batch.core.JobParameters;
+import org.springframework.batch.core.JobParametersBuilder;
+>>>>>>> 0014
 import org.springframework.batch.core.JobParametersInvalidException;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
@@ -22,6 +29,7 @@ import java.util.concurrent.ScheduledFuture;
 @Component
 public class ContaJobLauncher {
 
+<<<<<<< HEAD
     private static final Logger LOGGER = LoggerFactory.getLogger(ContaJobLauncher.class);
 
     private final Job job;
@@ -48,4 +56,20 @@ public class ContaJobLauncher {
         parameters.put("currentTime", parameter);
         return new JobParameters(parameters);
     }
+=======
+
+	
+	@Autowired
+	private Job job;
+	
+	@Autowired
+	private JobLauncher jobLauncher;	       
+    
+	public JobExecution execute() throws Exception, JobRestartException, JobInstanceAlreadyCompleteException, JobParametersInvalidException {
+		JobParameters params = new JobParametersBuilder().addString("JobID", String.valueOf(System.currentTimeMillis()))
+				.toJobParameters();
+		return jobLauncher.run(job, params);
+	}
+    
+>>>>>>> 0014
 }

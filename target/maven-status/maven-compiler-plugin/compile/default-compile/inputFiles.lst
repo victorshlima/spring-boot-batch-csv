@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\development\DEV_TOOLS\desafiotecnico\spring-batch-examples\reading-data\csv-file\SpringReadWrite\src\main\java\br\com\southsystem\spring\batch\common\ContaProcessor.java
 D:\development\DEV_TOOLS\desafiotecnico\spring-batch-examples\reading-data\csv-file\SpringReadWrite\src\main\java\br\com\southsystem\spring\batch\domain\ContaIn.java
 D:\development\DEV_TOOLS\desafiotecnico\spring-batch-examples\reading-data\csv-file\SpringReadWrite\src\main\java\br\com\southsystem\spring\batch\common\ContaJobLauncher.java
@@ -5,3 +6,21 @@ D:\development\DEV_TOOLS\desafiotecnico\spring-batch-examples\reading-data\csv-f
 D:\development\DEV_TOOLS\desafiotecnico\spring-batch-examples\reading-data\csv-file\SpringReadWrite\src\main\java\br\com\southsystem\spring\batch\receita\ReceitaService.java
 D:\development\DEV_TOOLS\desafiotecnico\spring-batch-examples\reading-data\csv-file\SpringReadWrite\src\main\java\br\com\southsystem\spring\batch\common\DesafioApplication.java
 D:\development\DEV_TOOLS\desafiotecnico\spring-batch-examples\reading-data\csv-file\SpringReadWrite\src\main\java\br\com\southsystem\spring\batch\domain\ContaOut.java
+=======
+D:\development\git\myRepo\spring-boot-batch-csv\src\main\java\br\com\southsystem\spring\batch\receita\ReceitaService.java
+D:\development\git\myRepo\spring-boot-batch-csv\src\main\java\br\com\southsystem\spring\batch\common\ContaJobLauncher.java
+D:\development\git\myRepo\spring-boot-batch-csv\src\main\java\br\com\southsystem\spring\batch\step\ContaItemWriter.java
+D:\development\git\myRepo\spring-boot-batch-csv\src\main\java\br\com\southsystem\spring\batch\domain\ContaOut.java
+D:\development\git\myRepo\spring-boot-batch-csv\src\main\java\br\com\southsystem\spring\batch\job\JobListenerInfo.java
+D:\development\git\myRepo\spring-boot-batch-csv\src\main\java\br\com\southsystem\spring\batch\common\DesafioApplication.java
+D:\development\git\myRepo\spring-boot-batch-csv\src\main\java\br\com\southsystem\spring\batch\step\ContaItemReader.java
+D:\development\git\myRepo\spring-boot-batch-csv\src\main\java\br\com\southsystem\spring\batch\common\ContaJobConfig.java
+D:\development\git\myRepo\spring-boot-batch-csv\src\main\java\br\com\southsystem\spring\batch\util\ContextInformation.java
+D:\development\git\myRepo\spring-boot-batch-csv\src\main\java\br\com\southsystem\spring\batch\job\StepListenerInfo.java
+D:\development\git\myRepo\spring-boot-batch-csv\src\main\java\br\com\southsystem\spring\batch\common\ContaProcessor.java
+D:\development\git\myRepo\spring-boot-batch-csv\src\main\java\br\com\southsystem\spring\batch\step\ContaItemProcessor.java
+D:\development\git\myRepo\spring-boot-batch-csv\src\main\java\br\com\southsystem\spring\batch\tasklet\FileDeletingTasklet.java
+D:\development\git\myRepo\spring-boot-batch-csv\src\main\java\br\com\southsystem\spring\batch\job\ExecutorJob.java
+D:\development\git\myRepo\spring-boot-batch-csv\src\main\java\br\com\southsystem\spring\batch\common\ContaStepConfig.java
+D:\development\git\myRepo\spring-boot-batch-csv\src\main\java\br\com\southsystem\spring\batch\domain\ContaIn.java
+>>>>>>> 0014

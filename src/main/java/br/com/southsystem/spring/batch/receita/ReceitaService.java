@@ -4,9 +4,18 @@ package br.com.southsystem.spring.batch.receita;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 /**
  * @author gabriel_stabel<gabriel_stabel@sicredi.com.br>
  */
+=======
+import org.springframework.stereotype.Component;
+
+/**
+ * @author gabriel_stabel<gabriel_stabel@sicredi.com.br>
+ */
+@Component
+>>>>>>> 0014
 public class ReceitaService {
 
 	// Esta é a implementação interna do "servico" do banco central. Veja o código fonte abaixo para ver os formatos esperados pelo Banco Central neste cenário.

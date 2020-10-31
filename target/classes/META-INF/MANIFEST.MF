@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Build-Jdk-Spec: 14
+Build-Jdk-Spec: 15
 Implementation-Title: Desafio - South System - Simulação de validaçã
  o de arquivo na receita
 Implementation-Version: 1.0.0
